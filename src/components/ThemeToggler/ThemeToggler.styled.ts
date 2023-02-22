@@ -9,7 +9,7 @@ export const CheckBoxWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1.5em;
+  gap: 1.25em;
 `;
 
 export const SunOrMoonWrapper = styled.div`

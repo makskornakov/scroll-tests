@@ -32,16 +32,18 @@ export const AppHeader = styled.header`
   height: 3.5em;
 `;
 export const InnerWrapper = styled.div`
+  /* outline: 1px solid red; */
+
   width: 100%;
 
   height: calc(100% - 3.5em);
   padding-top: 3.5em;
 
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray.b};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  outline: 1px solid red;
   scroll-snap-align: start;
 
   p {
