@@ -18,11 +18,12 @@ export const AppWrapper = styled.div`
 `;
 
 export const ScrollSnapWrapper = styled.div`
-  margin-top: 3em;
+  /* margin-top: 3em; */
   width: 100%;
-  height: calc(100% - 3em);
-  outline: 1px solid blue;
-  overflow: hidden;
+  height: 100%;
+  /* height: calc(100% - 3em); */
+  /* outline: 1px solid blue; */
+  overflow-x: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 `;
@@ -34,20 +35,29 @@ export const AppHeader = styled.header`
   align-items: center;
   top: 0;
   justify-content: space-between;
-  width: 100%;
+
+  width: 98%;
   /* background: rgba(0, 0, 0, 0.5); */
   height: 3em;
-  outline: 1px solid ${({ theme }) => theme.colors.text};
+  /* outline: 1px solid purple; */
 `;
 export const InnerWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  /* height: 100% */
+  height: calc(100% - 3em);
+  padding-top: 3em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   outline: 1px solid red;
   scroll-snap-align: start;
+
+  /* p styles */
+  p {
+    max-width: 40%;
+    text-align: center;
+  }
 `;
 
 export const TemporaryThemeSwitcher = styled.div`
@@ -56,6 +66,13 @@ export const TemporaryThemeSwitcher = styled.div`
   border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.gray.a};
+  cursor: pointer;
+  transition-duration: 0.4s;
+  transition-property: background-color;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 export const Footer = styled.footer`
@@ -64,7 +81,7 @@ export const Footer = styled.footer`
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  height: 5em;
-  outline: 1px solid green;
+  height: 8em;
+  /* outline: 1px solid green; */
   scroll-snap-align: end;
 `;

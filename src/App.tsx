@@ -25,27 +25,60 @@ function App() {
       <AppWrapper>
         <AppHeader>
           <h1>Page name</h1>
-          <TemporaryThemeSwitcher
-            onClick={() => {
-              setTheme(themeSwitcher(theme));
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: 'row',
+              gap: '1rem',
             }}
-          />
+          >
+            <p>
+              Theme: <strong>{theme}</strong>
+            </p>
+            <TemporaryThemeSwitcher
+              onClick={() => {
+                setTheme(themeSwitcher(theme));
+              }}
+            />
+          </div>
         </AppHeader>
         <ScrollSnapWrapper>
           <InnerWrapper>
             <h1>Styled Components</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              quod, voluptate, quia, voluptates quae voluptatibus quibusdam
+              accusantium quas quidem quos nemo.
+            </p>
           </InnerWrapper>
           <InnerWrapper>
             <h1>Styled 2</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              quod, voluptate, quia, voluptates quae voluptatibus quibusdam
+              accusantium quas quidem quos nemo.
+            </p>
           </InnerWrapper>
           <InnerWrapper>
             <h1>Styled 3</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              quod, voluptate, quia, voluptates quae voluptatibus quibusdam
+              accusantium quas quidem quos nemo.
+            </p>
           </InnerWrapper>
           <InnerWrapper>
             <h1>Styled 4</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              quod, voluptate, quia, voluptates quae voluptatibus quibusdam
+              accusantium quas quidem quos nemo.
+            </p>
           </InnerWrapper>
           <Footer>
             <h1>Footer</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </Footer>
         </ScrollSnapWrapper>
       </AppWrapper>
