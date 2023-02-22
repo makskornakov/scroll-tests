@@ -7,10 +7,10 @@ import {
   Footer,
   InnerWrapper,
   ScrollSnapWrapper,
-  TemporaryThemeSwitcher,
 } from './styles';
 import { useEffect } from 'react';
 import themeMap from './theme';
+import ThemeToggler from './components/ThemeToggler/ThemeToggler';
 
 function App() {
   const [theme, setTheme] = useLocalStorage<keyof typeof themeMap>(
@@ -33,14 +33,16 @@ function App() {
               gap: '1rem',
             }}
           >
+            <ThemeToggler theme={theme} setTheme={setTheme} />
+            {/*
             <p>
               Theme: <strong>{theme}</strong>
             </p>
-            <TemporaryThemeSwitcher
+             <TemporaryThemeSwitcher
               onClick={() => {
                 setTheme(themeSwitcher(theme));
               }}
-            />
+            /> */}
           </div>
         </AppHeader>
         <ScrollSnapWrapper>
@@ -88,28 +90,16 @@ function App() {
 
 export default App;
 
-function themeSwitcher(theme: string) {
-  const clearTheme = theme.slice(0, -1);
-  const themeNumber = theme.slice(-1);
-
-  const newTheme = ((clearTheme === 'dark' ? 'light' : 'dark') +
-    themeNumber) as keyof typeof themeMap;
-
-  return newTheme;
-}
-
-// function setMetaThemeColor(color: string) {
-//   document.head
-//     .querySelector('meta[name=theme-color]')!
-//     .setAttribute('content', color);
-// }
-
 export function useSetMetaThemeColor(content: string) {
   useEffect(() => {
     const meta = document.head.querySelector('meta[name=theme-color]');
+    const body = document.body;
     console.log(meta);
     if (meta) {
       meta.setAttribute('content', content);
+    }
+    if (body) {
+      body.style.backgroundColor = content;
     }
 
     return () => {};

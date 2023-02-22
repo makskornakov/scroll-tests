@@ -11,10 +11,8 @@ export const AppWrapper = styled.div`
   width: 100%;
   height: 100vh;
   /* height: 100vh; */
-  background: ${({ theme }) => theme.colors.background};
+  /* background: ${({ theme }) => theme.colors.background}; */
   color: ${({ theme }) => theme.colors.text};
-
-  transition-duration: 0.4s;
 `;
 
 export const ScrollSnapWrapper = styled.div`
@@ -57,21 +55,6 @@ export const InnerWrapper = styled.div`
   p {
     max-width: 40%;
     text-align: center;
-  }
-`;
-
-export const TemporaryThemeSwitcher = styled.div`
-  width: 2em;
-  height: 2em;
-  border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.gray.a};
-  cursor: pointer;
-  transition-duration: 0.4s;
-  transition-property: background-color;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
