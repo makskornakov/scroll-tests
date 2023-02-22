@@ -13,8 +13,8 @@ export const CheckBoxWrapper = styled.div`
 `;
 
 export const SunOrMoonWrapper = styled.div`
-  width: 2em;
-  height: 2em;
+  width: 1.9em;
+  height: 1.9em;
   position: relative;
   img {
     position: absolute;

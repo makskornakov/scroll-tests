@@ -2,31 +2,24 @@ import styled from 'styled-components';
 
 export const AppWrapper = styled.div`
   display: flex;
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* scroll none */
-  /* overflow: hidden; */
   justify-content: center;
-  /* flex-flow: column; */
   width: 100%;
   height: 100vh;
-  /* height: 100vh; */
-  /* background: ${({ theme }) => theme.colors.background}; */
   color: ${({ theme }) => theme.colors.text};
 `;
 
 export const ScrollSnapWrapper = styled.div`
-  /* margin-top: 3em; */
   width: 100%;
   height: 100%;
-  /* height: calc(100% - 3em); */
-  /* outline: 1px solid blue; */
+
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 `;
 
 export const AppHeader = styled.header`
+  /* outline: 1px solid purple; */
+
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -34,16 +27,16 @@ export const AppHeader = styled.header`
   top: 0;
   justify-content: space-between;
 
-  width: 98%;
+  width: 97%;
   /* background: rgba(0, 0, 0, 0.5); */
-  height: 3em;
-  /* outline: 1px solid purple; */
+  height: 3.5em;
 `;
 export const InnerWrapper = styled.div`
   width: 100%;
-  /* height: 100% */
-  height: calc(100% - 3em);
-  padding-top: 3em;
+
+  height: calc(100% - 3.5em);
+  padding-top: 3.5em;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,7 +44,6 @@ export const InnerWrapper = styled.div`
   outline: 1px solid red;
   scroll-snap-align: start;
 
-  /* p styles */
   p {
     max-width: 40%;
     text-align: center;
@@ -59,12 +51,13 @@ export const InnerWrapper = styled.div`
 `;
 
 export const Footer = styled.footer`
+  /* outline: 1px solid green; */
+
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
   height: 8em;
-  /* outline: 1px solid green; */
   scroll-snap-align: end;
 `;
