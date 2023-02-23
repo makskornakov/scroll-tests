@@ -2,6 +2,11 @@
   "name": "my-page",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Maksim Kornakov",
+    "email": "makskornakov@gmail.com"
+  },
+  "homepage": "https://makskornakov.github.io/scroll-tests",
   "dependencies": {
     "@react-three/fiber": "^8.11.2",
     "@testing-library/jest-dom": "^5.16.5",
@@ -21,10 +26,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:production": "GENERATE_SOURCEMAP=false react-scripts build",
+    "postbuild": "ln -s index.html build/404.html"
   },
   "eslintConfig": {
     "extends": [

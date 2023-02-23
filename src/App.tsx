@@ -25,7 +25,7 @@ function App() {
       <AppWrapper>
         <ScrollSnapWrapper>
           <AppHeader>
-            <h1>Page name</h1>
+            <h1>Maksim Kornakov</h1>
             <div
               style={{
                 display: 'flex',
