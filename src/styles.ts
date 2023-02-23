@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const AppWrapper = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
   color: ${({ theme }) => theme.colors.text};
@@ -11,6 +13,9 @@ export const AppWrapper = styled.div`
 export const ScrollSnapWrapper = styled.div`
   width: 100%;
   height: 100%;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
 
   overflow-x: hidden;
   overflow-y: scroll;
@@ -20,15 +25,22 @@ export const ScrollSnapWrapper = styled.div`
 export const AppHeader = styled.header`
   /* outline: 1px solid purple; */
 
-  position: fixed;
+  margin: auto;
+  /* position: fixed; */
   display: flex;
   flex-direction: row;
   align-items: center;
-  top: 0;
+  /* top: 0; */
   justify-content: space-between;
 
   width: 97%;
-  /* background: rgba(0, 0, 0, 0.5); */
+  /* background gradient top - black, bottom - transparent, more intense at the bottom */
+  /* background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ); */
+  scroll-snap-align: start;
   height: 3.5em;
 `;
 export const InnerWrapper = styled.div`
@@ -36,8 +48,9 @@ export const InnerWrapper = styled.div`
 
   width: 100%;
 
-  height: calc(100% - 3.5em);
-  padding-top: 3.5em;
+  /* height: calc(100% - 3.5em); */
+  height: 100%;
+  /* padding-top: 3.5em; */
 
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray.b};
   display: flex;

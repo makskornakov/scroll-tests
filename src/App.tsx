@@ -23,29 +23,20 @@ function App() {
   return (
     <ThemeProvider theme={themeMap[theme]}>
       <AppWrapper>
-        <AppHeader>
-          <h1>Page name</h1>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              flexDirection: 'row',
-              gap: '1rem',
-            }}
-          >
-            <ThemeToggler theme={theme} setTheme={setTheme} />
-            {/*
-            <p>
-              Theme: <strong>{theme}</strong>
-            </p>
-             <TemporaryThemeSwitcher
-              onClick={() => {
-                setTheme(themeSwitcher(theme));
-              }}
-            /> */}
-          </div>
-        </AppHeader>
         <ScrollSnapWrapper>
+          <AppHeader>
+            <h1>Page name</h1>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'row',
+                gap: '1rem',
+              }}
+            >
+              <ThemeToggler theme={theme} setTheme={setTheme} />
+            </div>
+          </AppHeader>
           <InnerWrapper>
             <h1>Styled Components</h1>
             <p>
