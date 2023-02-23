@@ -21,12 +21,12 @@ function ThemeToggler({
       ></CheckBox>
       <SunOrMoonWrapper>
         <img
-          src="/icons/moon.svg"
+          src="icons/moon.svg"
           alt="moon"
           style={theme.includes('dark') ? { opacity: 1 } : { opacity: 0 }}
         />
         <img
-          src="/icons/sun.svg"
+          src="icons/sun.svg"
           alt="sun"
           style={theme.includes('dark') ? { opacity: 0 } : { opacity: 1 }}
         />

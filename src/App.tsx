@@ -48,7 +48,7 @@ function App() {
           <InnerWrapper>
             <h1>Opa, Logo!</h1>
             <img
-              src="/icons/Logo.svg"
+              src="icons/Logo.svg"
               alt="Logo"
               style={{ width: '30em', height: 'auto' }}
             />
