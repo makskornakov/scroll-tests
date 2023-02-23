@@ -38,7 +38,7 @@ function App() {
             </div>
           </AppHeader>
           <InnerWrapper>
-            <h1>Styled Components</h1>
+            <h1>The Introduction</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
               quod, voluptate, quia, voluptates quae voluptatibus quibusdam
