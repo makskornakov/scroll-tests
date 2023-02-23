@@ -46,15 +46,25 @@ function App() {
             </p>
           </InnerWrapper>
           <InnerWrapper>
-            <h1>Styled 2</h1>
+            <h1>Opa, Logo!</h1>
+            <img
+              src="/icons/Logo.svg"
+              alt="Logo"
+              style={{ width: '30em', height: 'auto' }}
+            />
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
               quod, voluptate, quia, voluptates quae voluptatibus quibusdam
               accusantium quas quidem quos nemo.
             </p>
           </InnerWrapper>
-          <InnerWrapper>
-            <h1>Styled 3</h1>
+          <InnerWrapper
+          // style={{
+          //   height: '150%',
+          // }}
+          >
+            <h1>Styled 2</h1>
+
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
               quod, voluptate, quia, voluptates quae voluptatibus quibusdam
