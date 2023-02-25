@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, {
+  // useEffect,
+  useRef,
+} from 'react';
+// import type { MutableRefObject } from 'react';
+// import { useState, useMemo } from 'react';
 import { InnerWrapper, Footer, ScrollSnapWrapper } from '../styles';
 import type themeMap from '../theme';
 import Header from './Header';
-import { themeSwitcher } from './ThemeToggler/ThemeToggler';
+
+import { useIntersectionObserver } from '../hooks/UseIntersection';
 
 function ScrollSnapBlock({
   theme,
@@ -12,32 +17,28 @@ function ScrollSnapBlock({
   theme: keyof typeof themeMap;
   setTheme: (newTheme: keyof typeof themeMap) => void;
 }) {
-  const [block3InViewport, setBlock3InViewport] = useState(false);
+  // useIntersectionObserver to change theme when element with id="styled-3" is in the viewport and change it back when it's not
 
-  useEffect(() => {
-    const element = document.getElementById('styled-3');
-    if (element) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setBlock3InViewport(true);
-          } else {
-            setBlock3InViewport(false);
-          }
-        },
-        { threshold: 0.5 }
-      );
-      observer.observe(element);
-    }
-  }, []);
+  const ref = useRef(null);
+  const isIntersecting = useIntersectionObserver(
+    ref,
+    {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
+    },
+    false
+  ).isIntersecting;
 
-  useEffect(() => {
-    if (block3InViewport) {
-      setTheme(themeSwitcher(theme));
-    } else {
-      setTheme(themeSwitcher(theme));
-    }
-  }, [block3InViewport]);
+  // const intersectionPercentage = useIntersectionObserver(
+  //   ref,
+  //   {
+  //     root: null,
+  //     rootMargin: '0px',
+  //     threshold: 0,
+  //   },
+  //   false
+  // ).intersectionPercent;
 
   return (
     <ScrollSnapWrapper id="scroll-snap-wrapper">
@@ -64,16 +65,33 @@ function ScrollSnapBlock({
           accusantium quas quidem quos nemo.
         </p>
       </InnerWrapper>
-      <InnerWrapper
-        // style={{
-        //   height: '150%',
-        // }}
-        id="styled-3"
-      >
+      <InnerWrapper ref={ref}>
         <h1>Styled 2</h1>
 
-        <h2>Oooooooopps!</h2>
-        <p>Seems like this section can be only viewed in the reversed theme.</p>
+        <p>
+          {isIntersecting
+            ? 'isIntersecting is true'
+            : 'isIntersecting is false'}
+        </p>
+
+        {/* <p
+          style={{
+            position: 'absolute',
+            top: '0',
+            left: '0',
+          }}
+        >
+          {intersectionPercentage}
+        </p> */}
+
+        <h2 style={translateStyleIfIntersecting('left', isIntersecting)}>
+          Oooooooopps!
+        </h2>
+
+        <p style={translateStyleIfIntersecting('right', isIntersecting)}>
+          Seems like this section rolls in from the right side of the screen
+          when it's in the viewport.
+        </p>
       </InnerWrapper>
       <InnerWrapper>
         <h1>Styled 4</h1>
@@ -92,3 +110,20 @@ function ScrollSnapBlock({
 }
 
 export default ScrollSnapBlock;
+
+function translateStyleIfIntersecting(
+  leftOrRight: 'left' | 'right',
+  isIntersecting: boolean
+) {
+  const transitionStyles = {
+    transition: 'transform 1.3s ease-in-out',
+  };
+
+  const result = isIntersecting
+    ? { transform: 'translateX(0)' }
+    : {
+        transform: `translateX(${leftOrRight === 'left' ? '-' : '+'}100vw)`,
+      };
+
+  return { ...result, ...transitionStyles };
+}
