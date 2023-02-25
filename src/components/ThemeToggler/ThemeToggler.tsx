@@ -1,5 +1,5 @@
 import React from 'react';
-import themeMap from '../../theme';
+import type themeMap from '../../theme';
 import {
   CheckBox,
   CheckBoxWrapper,
@@ -17,7 +17,7 @@ function ThemeToggler({
     <CheckBoxWrapper>
       <CheckBox
         checked={theme.includes('light')}
-        onChange={() => setTheme(themeSwitcher(theme) as keyof typeof themeMap)}
+        onChange={() => setTheme(themeSwitcher(theme))}
       ></CheckBox>
       <SunOrMoonWrapper>
         <img
@@ -36,9 +36,11 @@ function ThemeToggler({
 }
 
 export default ThemeToggler;
+// set return type of the function
 
-function themeSwitcher(theme: string) {
+export function themeSwitcher(theme: string) {
   const clearTheme = theme.slice(0, -1);
   const themeNumber = theme.slice(-1);
-  return (clearTheme === 'dark' ? 'light' : 'dark') + themeNumber;
+  return ((clearTheme === 'dark' ? 'light' : 'dark') +
+    themeNumber) as keyof typeof themeMap;
 }
