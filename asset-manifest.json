@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/scroll-tests/static/css/main.1021ec41.css",
-    "main.js": "/scroll-tests/static/js/main.26ebe0fd.js",
+    "main.js": "/scroll-tests/static/js/main.da010477.js",
     "static/js/498.194a1734.chunk.js": "/scroll-tests/static/js/498.194a1734.chunk.js",
     "index.html": "/scroll-tests/index.html"
   },
   "entrypoints": [
     "static/css/main.1021ec41.css",
-    "static/js/main.26ebe0fd.js"
+    "static/js/main.da010477.js"
   ]
 }
