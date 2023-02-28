@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { rubberCheckboxStyles } from '../RubberCheckbox/RubberCheckbox.styled';
-
 export const CheckBoxWrapper = styled.div`
   /* outline: 1px solid red; */
 
@@ -21,9 +19,4 @@ export const SunOrMoonWrapper = styled.div`
     width: 100%;
     transition: 0.4s;
   }
-`;
-
-export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
-  ${rubberCheckboxStyles}
-  appearance: none;
 `;

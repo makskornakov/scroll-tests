@@ -1,10 +1,7 @@
-import React from 'react';
+import { RubberCheckbox } from '../RubberCheckbox/RubberCheckbox';
+import { CheckBoxWrapper, SunOrMoonWrapper } from './ThemeToggler.styled';
+
 import type themeMap from '../../theme';
-import {
-  CheckBox,
-  CheckBoxWrapper,
-  SunOrMoonWrapper,
-} from './ThemeToggler.styled';
 
 function ThemeToggler({
   theme,
@@ -15,10 +12,10 @@ function ThemeToggler({
 }) {
   return (
     <CheckBoxWrapper>
-      <CheckBox
+      <RubberCheckbox
         checked={theme.includes('light')}
         onChange={() => setTheme(themeSwitcher(theme))}
-      ></CheckBox>
+      />
       <SunOrMoonWrapper>
         <img
           src="icons/moon.svg"
@@ -41,6 +38,5 @@ export default ThemeToggler;
 export function themeSwitcher(theme: string) {
   const clearTheme = theme.slice(0, -1);
   const themeNumber = theme.slice(-1);
-  return ((clearTheme === 'dark' ? 'light' : 'dark') +
-    themeNumber) as keyof typeof themeMap;
+  return ((clearTheme === 'dark' ? 'light' : 'dark') + themeNumber) as keyof typeof themeMap;
 }
