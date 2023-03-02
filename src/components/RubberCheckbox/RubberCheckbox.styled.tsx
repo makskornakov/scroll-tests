@@ -1,61 +1,23 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const checkboxSize = 25;
-// const settingsCheckboxStyles = css`
-//   margin: 0; // reset browser defaults
-
-//   display: inline-block;
-//   width: ${checkboxSize}px;
-//   height: ${checkboxSize}px;
-//   border-radius: ${(3 / 16) * checkboxSize}px;
-//   vertical-align: middle;
-
-//   transition-duration: 0.9s;
-//   transition-property: border-color;
-
-//   border: ${checkboxSize / 16}px solid;
-//   border-color: #fff;
-
-//   position: relative;
-
-//   cursor: pointer;
-
-//   ::after {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-
-//     background-color: var(--color-candle-green);
-//     height: 100%;
-//     width: 0;
-//     transition-duration: 0.5s;
-//     transition-property: width;
-
-//     border-radius: inherit;
-//   }
-//   :checked {
-//     border-color: transparent;
-
-//     ::after {
-//       width: 100%;
-//     }
-//   }
-// `;
-const settingsCheckboxBorderRadius = (3 / 16) * checkboxSize;
-const settingsCheckboxBorderWidth = checkboxSize / 16;
-const settingsCheckboxAnimation = '0.6s ease-out 0.08s';
-export const rubberCheckboxStyles = css`
+export interface RubberCheckboxStylesProps {
+  size: number;
+  borderRadius: number;
+  borderWidth: number;
+  animation: string;
+  draggableLever: boolean;
+}
+export const rubberCheckboxStyles = css<RubberCheckboxStylesProps & { isDragging: boolean }>`
   margin: 0; // reset browser defaults
 
   display: inline-block; // This is the default in most browsers
-  width: ${checkboxSize * 2}px;
-  height: ${checkboxSize}px;
-  border-radius: ${settingsCheckboxBorderRadius}px;
+  width: ${({ size }) => size * 2}px;
+  height: ${({ size }) => size}px;
+  border-radius: ${({ borderRadius }) => borderRadius}px;
 
   /* Copied from input styles */
 
-  border: ${settingsCheckboxBorderWidth}px solid;
+  border: ${({ borderWidth }) => borderWidth}px solid;
   border-color: ${(props) => props.theme.colors.gray.b};
 
   position: relative;
@@ -68,9 +30,9 @@ export const rubberCheckboxStyles = css`
     top: 0;
     left: 0;
 
-    border: ${settingsCheckboxBorderWidth * 1.6}px solid;
+    border: ${({ borderWidth }) => borderWidth * 1.6}px solid;
     border-color: ${(props) => props.theme.colors.background};
-    border-radius: ${settingsCheckboxBorderRadius}px;
+    border-radius: ${({ borderRadius }) => borderRadius}px;
     box-sizing: border-box;
 
     height: 100%;
@@ -85,19 +47,19 @@ export const rubberCheckboxStyles = css`
 
     ::after {
       background-color: ${(props) => props.theme.colors.candleGreen};
-      margin-left: ${checkboxSize - settingsCheckboxBorderWidth}px;
+      margin-left: ${({ size, borderWidth }) => size - borderWidth}px;
     }
   }
 
-  animation: ${settingsCheckboxAnimation} uncheck;
+  animation: ${({ animation }) => animation} uncheck;
   :checked {
-    animation: ${settingsCheckboxAnimation} check;
+    animation: ${({ animation }) => animation} check;
   }
   ::after {
-    animation: ${settingsCheckboxAnimation} afterUncheck;
+    animation: ${({ animation }) => animation} afterUncheck;
   }
   :checked::after {
-    animation: ${settingsCheckboxAnimation} afterCheck;
+    animation: ${({ animation }) => animation} afterCheck;
   }
   @keyframes afterUncheck {
     8% {
@@ -133,4 +95,16 @@ export const rubberCheckboxStyles = css`
       border-color: ${(props) => props.theme.colors.candleGreen};
     }
   }
+
+  ${({ draggableLever, isDragging }) =>
+    draggableLever &&
+    isDragging &&
+    css`
+      cursor: grabbing;
+    `}
+`;
+
+export const RubberCheckBoxInput = styled.input.attrs({ type: 'checkbox' })`
+  ${rubberCheckboxStyles}
+  appearance: none;
 `;
