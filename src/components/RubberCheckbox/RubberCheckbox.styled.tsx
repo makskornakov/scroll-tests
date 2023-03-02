@@ -5,8 +5,9 @@ export interface RubberCheckboxStylesProps {
   borderRadius: number;
   borderWidth: number;
   animation: string;
+  draggableLever: boolean;
 }
-export const rubberCheckboxStyles = css<RubberCheckboxStylesProps>`
+export const rubberCheckboxStyles = css<RubberCheckboxStylesProps & { isDragging: boolean }>`
   margin: 0; // reset browser defaults
 
   display: inline-block; // This is the default in most browsers
@@ -94,6 +95,13 @@ export const rubberCheckboxStyles = css<RubberCheckboxStylesProps>`
       border-color: ${(props) => props.theme.colors.candleGreen};
     }
   }
+
+  ${({ draggableLever, isDragging }) =>
+    draggableLever &&
+    isDragging &&
+    css`
+      cursor: grabbing;
+    `}
 `;
 
 export const RubberCheckBoxInput = styled.input.attrs({ type: 'checkbox' })`

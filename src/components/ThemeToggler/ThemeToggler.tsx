@@ -14,7 +14,9 @@ function ThemeToggler({
     <CheckBoxWrapper>
       <RubberCheckbox
         checked={theme.includes('light')}
-        onChange={() => setTheme(themeSwitcher(theme))}
+        onChange={(event) => {
+          setTheme(themeSwitcher(theme, event.currentTarget.checked));
+        }}
       />
       <SunOrMoonWrapper>
         <img
@@ -35,8 +37,10 @@ function ThemeToggler({
 export default ThemeToggler;
 // set return type of the function
 
-export function themeSwitcher(theme: string) {
-  const clearTheme = theme.slice(0, -1);
+export function themeSwitcher(
+  theme: string,
+  checked = theme.slice(0, -1) === 'dark', // clearTheme === 'dark'
+) {
   const themeNumber = theme.slice(-1);
-  return ((clearTheme === 'dark' ? 'light' : 'dark') + themeNumber) as keyof typeof themeMap;
+  return ((checked ? 'light' : 'dark') + themeNumber) as keyof typeof themeMap;
 }
