@@ -9,6 +9,7 @@ import type themeMap from '../theme';
 import Header from './Header';
 
 import { useIntersectionObserver } from '../hooks/UseIntersection';
+import { SectionWrapper } from './Main.styled';
 
 function ScrollSnapBlock({
   theme,
@@ -25,7 +26,7 @@ function ScrollSnapBlock({
     {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5,
+      threshold: 0.4,
     },
     false
   ).isIntersecting;
@@ -94,12 +95,26 @@ function ScrollSnapBlock({
         </p>
       </InnerWrapper>
       <InnerWrapper>
-        <h1>Styled 4</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          quod, voluptate, quia, voluptates quae voluptatibus quibusdam
-          accusantium quas quidem quos nemo.
-        </p>
+        <h1>Title</h1>
+        <SectionWrapper>
+          <div>
+            <h2>Styled 4</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              quod, voluptate, quia, voluptates quae voluptatibus quibusdam
+              accusantium quas quidem quos nemo.
+            </p>
+          </div>
+          <div>
+            <div
+              style={{
+                height: '10em',
+                width: '10em',
+                backgroundColor: 'pink',
+              }}
+            ></div>
+          </div>
+        </SectionWrapper>
       </InnerWrapper>
       <Footer>
         <h1>Footer</h1>
@@ -116,7 +131,7 @@ function translateStyleIfIntersecting(
   isIntersecting: boolean
 ) {
   const transitionStyles = {
-    transition: 'transform 1.3s ease-in-out',
+    transition: 'transform 0.7s ease-in-out',
   };
 
   const result = isIntersecting

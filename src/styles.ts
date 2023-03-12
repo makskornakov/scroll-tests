@@ -58,6 +58,12 @@ export const InnerWrapper = styled.div`
   align-items: center;
   justify-content: center;
   scroll-snap-align: start;
+  position: relative;
+
+  > h1 {
+    position: absolute;
+    top: 0;
+  }
 
   p {
     max-width: 40%;
